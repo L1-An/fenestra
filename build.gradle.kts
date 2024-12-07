@@ -1,8 +1,10 @@
+import io.izzel.taboolib.gradle.*
+
 plugins {
     `java-library`
     `maven-publish`
-    id("io.izzel.taboolib") version "1.55"
-    id("org.jetbrains.kotlin.jvm") version "1.5.10"
+    id("io.izzel.taboolib") version "2.0.22"
+    id("org.jetbrains.kotlin.jvm") version "1.8.22"
 }
 
 taboolib {
@@ -11,22 +13,14 @@ taboolib {
             name("坏黑")
         }
     }
-    install("common")
-    install("common-5")
-    install("module-ui")
-    install("module-nms")
-    install("module-nms-util")
-    install("module-configuration")
-    install("module-chat")
-    install("module-lang")
-    install("platform-bukkit")
-    install("expansion-command-helper")
+    env {
+        install(Basic, Bukkit, BukkitUI, BukkitNMS, BukkitNMSUtil, MinecraftChat, CommandHelper)
+    }
     classifier = null
-    version = "6.0.12-34"
+    version { taboolib = "6.2.0" }
 }
 
 repositories {
-    maven { url = uri("https://repo.tabooproject.org/storages/public/releases") }
     mavenCentral()
 }
 
